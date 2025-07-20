@@ -1,1 +1,10 @@
 # portfolio
+
+## Bio
+
+
+##Skills
+
+
+
+##Projects
