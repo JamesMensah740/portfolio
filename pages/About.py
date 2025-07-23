@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+import os
 
 st.set_page_config(page_title="Welcome", layout="wide")
 
@@ -10,10 +11,14 @@ section = st.sidebar.selectbox("Select Section", ["About Me", "Skills", "Project
 # === MAIN PAGE ===
 if section == "About Me":
     st.title("👋 Hi, I'm James Mensah")
-    
-    # Profile Picture
-    image1 = Image.open("images\picture.jpeg")  # Upload your own image
-    st.image(image1, caption="James Mensah", width=250)
+
+    # Correct image path using forward slash
+    image_path = os.path.join("images", "picture.jpeg")
+    if os.path.exists(image_path):
+        image1 = Image.open(image_path)
+        st.image(image1, caption="James Mensah", width=250)
+    else:
+        st.warning("Profile image not found. Please upload to `images/picture.jpeg`")
 
     st.markdown("""
     ### About Me
@@ -24,10 +29,10 @@ if section == "About Me":
     - 💼 Experience: Analytics Engineer with Peepalytics (August 2024 – July 2025)
     - 🔧 Tools I Use: `pandas`, `MySQL`, `Render`, `scrapy`, `streamlit`
     """)
-    
-    # Second Image (optional)
-    image2 = Image.open("images\picture.jpeg")
-    st.image(image2, caption="In Action", width=400)
+
+    # Optional second image (remove if not needed)
+    if os.path.exists(image_path):
+        st.image(image1, caption="In Action", width=400)
 
 elif section == "Skills":
     st.header("🛠 Skills")
@@ -46,6 +51,5 @@ elif section == "Projects":
 elif section == "Contact":
     st.header("📬 Contact Me")
     st.write("📧 Jamesmensah01789@gmail.com")
-    st.write("[🔗 LinkedIn](https://www.linkedin.com/in/YOUR-PROFILE)")
-    st.write("[📁 GitHub](https://github.com/YOUR-GITHUB)")
-
+    st.write("[🔗 LinkedIn]linkedin.com/in/james-mensah-645314248")
+    st.write("[📁 GitHub]https://github.com/JamesMensah740")
