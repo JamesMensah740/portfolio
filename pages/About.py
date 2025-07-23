@@ -51,5 +51,5 @@ elif section == "Projects":
 elif section == "Contact":
     st.header("📬 Contact Me")
     st.write("📧 Jamesmensah01789@gmail.com")
-    st.write("[🔗 LinkedIn]linkedin.com/in/james-mensah-645314248")
+    st.write("[🔗 LinkedIn] https://linkedin.com/in/james-mensah-645314248")
     st.write("[📁 GitHub]https://github.com/JamesMensah740")
