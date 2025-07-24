@@ -2,22 +2,48 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-# Config
+# --- Streamlit Config ---
 st.set_page_config(page_title="Loan Risk Analysis", layout="wide")
 st.title("💰 Loan Approval & Risk Analysis")
+
 st.markdown("""
-Analyze a real-world loan dataset to identify patterns in approvals and financial risk levels.
-This interactive dashboard highlights key drivers of lending decisions using **pandas** and **Plotly**.
+Analyze a real-world loan application dataset to uncover approval patterns and credit risk insights.
+This dashboard uses **pandas** and **Plotly** to clean, explore, and visualize financial decision data.
 """)
 
-# Load dataset
+# --- Load & Clean Data ---
 @st.cache_data
-def load_data():
+def load_clean_data():
     df = pd.read_csv("data/loan_data.csv")
-    df['RiskBucket'] = pd.cut(df['RiskScore'], bins=[0, 40, 70, 100], labels=["High Risk", "Medium Risk", "Low Risk"])
+
+    # Clean specific numeric columns
+    def clean_numeric_column(series):
+        return pd.to_numeric(series.astype(str).str.replace(".", "", regex=False), errors='coerce')
+
+    columns_to_clean = [
+        'MonthlyDebtPayments', 'CreditCardUtilizationRate', 'DebtToIncomeRatio',
+        'UtilityBillsPaymentHistory', 'BaseInterestRate', 'InterestRate',
+        'MonthlyLoanPayment', 'TotalDebtToIncomeRatio',
+        'TotalAssets', 'TotalLiabilities', 'NetWorth', 'MonthlyIncome',
+        'SavingsAccountBalance', 'CheckingAccountBalance'
+    ]
+
+    for col in columns_to_clean:
+        if col in df.columns:
+            df[col] = clean_numeric_column(df[col])
+
+    # Clean RiskScore separately
+    df['RiskScore'] = pd.to_numeric(df['RiskScore'], errors='coerce')
+
+    # Add Risk Bucket
+    df['RiskBucket'] = pd.cut(df['RiskScore'], bins=[0, 40, 70, 100],
+                              labels=["High Risk", "Medium Risk", "Low Risk"])
+
     return df
 
-df = load_data()
+# Load data
+df = load_clean_data()
+
 
 # === Section 1: Dataset Explorer ===
 st.header("🔍 Dataset Explorer")
