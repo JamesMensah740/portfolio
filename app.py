@@ -3,7 +3,7 @@ import os
 
 # Streamlit page configuration
 st.set_page_config(
-    page_title="Employee Attrition Portfolio App",
+    page_title="Portfolio App with Analytics Projects And Tools",
     page_icon="📊",
     layout="wide"
 )
