@@ -21,18 +21,34 @@ if section == "About Me":
         st.warning("Profile image not found. Please upload to `images/picture.jpeg`")
 
     st.markdown("""
-    ### About Me
-    I'm a data professional who specializes in end-to-end analytics solutions using tools I actually work with—**Pandas, SQL, and Streamlit**.
-    
-    From cleaning raw data to deploying full dashboards, I believe in _showing_, not telling.
-    
-    - 💼 Experience: Analytics Engineer with Peepalytics (August 2024 – July 2025)
-    - 🔧 Tools I Use: `pandas`, `MySQL`, `Render`, `scrapy`, `streamlit`
+    ### 👨‍💻 About Me
+    I'm **James Mensah**, a results-driven data professional passionate about turning raw data into meaningful business insights.
+
+    With a strong focus on practical tools like **pandas**, **SQL**, and **Streamlit**, I build complete end-to-end analytics solutions — from wrangling messy data to deploying polished dashboards.
+
+    #### 🧩 What Sets Me Apart
+    - I use tools I actually work with — no fluff.
+    - I prioritize clarity, storytelling, and usability.
+    - I believe in _**showing, not telling**_ — every project in this portfolio is interactive and replicable.
+
+    #### 💼 Experience
+    **Analytics Engineer at Peepalytics**  
+    *August 2024 – July 2025*  
+    - Data wrangling and transformation using Python
+    - dashboard development
+    - Insights generation
+    - Analytics pipeline automation
+
+    #### 🧰 Core Stack
+    - `pandas` for analysis
+    - `MySQL` for querying
+    - `streamlit` for dashboards
+    - `selenium` for web scraping
+    - `PostgreSQL` for data warehousing
+
+    > “Good data tells a story. Great analysts bring it to life.”
     """)
 
-    # Optional second image (remove if not needed)
-    if os.path.exists(image_path):
-        st.image(image1, caption="In Action", width=400)
 
 elif section == "Skills":
     st.header("🛠 Skills")
