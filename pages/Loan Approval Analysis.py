@@ -4,7 +4,7 @@ import plotly.express as px
 
 # --- Streamlit Config ---
 st.set_page_config(page_title="Loan Risk Analysis", layout="wide")
-st.title("💰 Loan Approval & Risk Analysis")
+st.title("Loan Approval & Risk Analysis")
 
 st.markdown("""
 Analyze a real-world loan application dataset to uncover approval patterns and credit risk insights.
@@ -51,7 +51,7 @@ with st.expander("View full dataset"):
     st.dataframe(df)
 
 # Filter for analysis
-st.sidebar.header("📌 Filters")
+st.sidebar.header(" Filters")
 selected_education = st.sidebar.multiselect("Education Level", df['EducationLevel'].unique(), default=df['EducationLevel'].unique())
 selected_status = st.sidebar.multiselect("Employment Status", df['EmploymentStatus'].unique(), default=df['EmploymentStatus'].unique())
 selected_risk = st.sidebar.multiselect("Risk Bucket", df['RiskBucket'].unique(), default=df['RiskBucket'].unique())
@@ -105,7 +105,7 @@ st.dataframe(filtered_df[filtered_df['RiskBucket'] == "High Risk"][[
     'RiskScore', 'LoanApproved', 'EmploymentStatus'
 ]])
 
-# === Section 6: Summary ===
+
 st.header("📌 Key Takeaways")
 st.markdown("""
 - **Loan approval** is influenced by multiple factors, including **credit score**, **employment status**, and **debt ratio**.
